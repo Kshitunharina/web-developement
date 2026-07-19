@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank App</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        width: 350px;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .income {
+        background-color: green;
+      }
+
+      .expense {
+        background-color: red;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .balance {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Bank App</h2>
+
+      <input type="number" id="amount" placeholder="Enter Amount" />
+
+      <div class="buttons">
+        <button class="income" onclick="addIncome()">Add Income</button>
+        <button class="expense" onclick="addExpense()">Add Expense</button>
+      </div>
+
+      <div class="balance">Balance: ₹<span id="balance">0</span></div>
+    </div>
+
+    <script>
+      let balance = 0;
+
+      function addIncome() {
+        const amount = Number(document.getElementById("amount").value);
+
+        if (amount > 0) {
+          balance += amount;
+          updateBalance();
+        } else {
+          alert("Please enter a valid amount");
+        }
+      }
+
+      function addExpense() {
+        const amount = Number(document.getElementById("amount").value);
+
+        if (amount > 0) {
+          balance -= amount;
+          updateBalance();
+        } else {
+          alert("Please enter a valid amount");
+        }
+      }
+
+      function updateBalance() {
+        document.getElementById("balance").textContent = balance;
+        document.getElementById("amount").value = "";
+      }
+    </script>
+  </body>
+</html>
